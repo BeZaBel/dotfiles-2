@@ -1,0 +1,58 @@
+#!/bin/env sh
+# This file is part of Itsnexn's dotfiles.
+#
+# Repository: https://github.com/itsnexn/dotfiles
+# LICENSE:    MIT (https://opensource.org/licenses/MIT)
+
+# helper function to ensure program exists
+function has() { type $@ > /dev/null }
+
+# Programs =====================================================================
+alias cb="xclip -sel clip" # pipe to clipboard
+alias fm="nnnrc"
+alias m="ncmpcpp"
+alias nb="newsboat"
+alias py="python3"
+alias tb="nc termbin.com 9999"
+alias t="task"
+alias up="python3 -m http.server"
+alias vim="nvim"
+
+# Git aliases
+alias gs="git status"
+alias ga="git add"
+alias gd="git diff"
+alias gf="git fetch"
+alias gfa="git fetch --all --prune"
+alias gc="git commit -v"
+alias gca="git commit -a"
+alias gco="git checkout"
+alias grm="git rm"
+
+# grep colors
+alias egrep="egrep --color=auto"
+alias fgrep="fgrep --color=auto"
+alias grep="grep --color=auto"
+
+# confirm before overwriting something
+alias cp="cp -i"
+alias mv="mv -i"
+alias rm="rm -i"
+
+# typo
+alias "cd.."="cd .."
+alias "cd."="cd .."
+alias claer="clear"
+
+# Changing "ls" to "exa"
+if has exa; then
+    alias ls="exa --color=always --group-directories-first"
+    alias ll="exa -l --color=always --group-directories-first"
+    alias la="exa -la --color=always --group-directories-first"
+fi
+
+# Wrapper aliases ==============================================================
+alias arduino-cli="arduino-cli --config-file $XDG_CONFIG_HOME/arduino15/arduino-cli.yaml"
+alias feh="feh --action1 'xclip -selection clipboard -t image/png -i %F'"
+alias yarn="yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/yarnrc"
+

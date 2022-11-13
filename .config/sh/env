@@ -1,0 +1,87 @@
+#!/bin/sh
+# This file is part of Itsnexn's dotfiles.
+#
+# Repository: https://github.com/itsnexn/dotfiles
+# LICENSE:    MIT (https://opensource.org/licenses/MIT)
+
+# Default Apps =================================================================
+export TERMINAL="st"
+export EDITOR="nvim"
+export VISUAL="nvim"
+export BROWSER="brave"
+export TODO_PATH="$HOME/Documents/todo"
+export MANPAGER="less"
+
+# Use bat if it exists
+if [ -n "$(command -v bat)" ]; then
+    export PAGER="less"
+else
+    export PAGER="bat"
+fi
+
+# Clean-up $HOME ===============================================================
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CACHE_HOME="$HOME/.local/cache"
+export XDG_STATE_HOME="$HOME/.local/state"
+# export XDG_RUNTIME_DIR="$HOME/.local/runtime"
+
+export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+
+# History files
+export HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/history"
+export HISTSIZE=1000
+export SAVEHIST=$HISTSIZE
+export LESSHISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/lesshistory"
+export HISTORY_IGNORE="(clear|ls|pwd|exit|sudo reboot|cd -|cd ..)"
+
+export WEECHAT_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/weechat"
+export MBSYNCRC="${XDG_CONFIG_HOME:-$HOME/.config}/mbsync/config"
+export QT_QPA_PLATFORMTHEME="qt5ct"
+export QT_AUTO_SCREEN_SCALE_FACTOR=0
+export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
+export ELECTRUMDIR="${XDG_DATA_HOME:-$HOME/.local/share}/electrum"
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv" # nvidia
+export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker" # Docker config directory
+export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
+export PYTHONDONTWRITEBYTECODE=1 # __pycache__
+export GOPATH="$XDG_DATA_HOME/go"
+export KDEHOME="$XDG_CONFIG_HOME/kde"
+export _JAVA_OPTIONS='-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME/java"\
+    -Dawt.useSystemAAFontSettings=on'
+export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+export PASSWORD_STORE_DIR="$XDG_DATA_HOME/pass"
+export PSQL_HISTORY="$XDG_STATE_HOME/psql_history" # PSQL
+export FFMPEG_DATADIR="$XDG_CONFIG_HOME/ffmpeg"
+export RANDFILE="$XDG_DATA_HOME/randfile" # Openssl $HOME/.rnd file
+export RUSTUP_HOME="$XDG_DATA_HOME/rustup" # $HOME/.rustup
+
+# RUBY
+export BUNDLE_USER_CONFIG="$XDG_CONFIG_HOME/bundle"
+export BUNDLE_USER_CACHE="$XDG_CACHE_HOME/bundle"
+export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME/bundle"
+
+# NPM
+export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/config
+export NPM_CONFIG_CACHE=$XDG_CACHE_HOME/npm
+export NPM_CONFIG_TMP=$XDG_RUNTIME_DIR/npm
+
+# App settings =================================================================
+export FZF_DEFAULT_OPTS="--reverse \
+    --color=bg+:#302D41,bg:#1E1E2E,spinner:#F8BD96,hl:#F28FAD \
+    --color=fg:#D9E0EE,header:#F28FAD,info:#DDB6F2,pointer:#F8BD96 \
+    --color=marker:#F8BD96,fg+:#F2CDCD,prompt:#DDB6F2,hl+:#F28FAD"
+
+export LESS="--mouse --use-color -r"
+export JAVA_FONTS=/usr/share/fonts/TTF
+
+# PATH =========================================================================
+[ -d "$HOME/.local/bin"         ] && export PATH="$PATH:$HOME/.local/bin"
+[ -d "$HOME/.local/scripts"     ] && export PATH="$PATH:$HOME/.local/scripts"
+[ -d "$XDG_DATA_HOME/go/bin"    ] && export PATH="$PATH:$XDG_DATA_HOME/go/bin"
+[ -d "/opt/jython/bin"          ] && export PATH="$PATH:/opt/jython/bin/"
+[ -d "/usr/bin/vendor_perl"     ] && export PATH="$PATH:/usr/bin/vendor_perl"
+[ -d "/usr/lib/jvm/default/bin" ] && export PATH="$PATH:/usr/lib/jvm/default/bin"
+[ -d "/opt/android-sdk/platform-tools" ] \
+                                  && export PATH="$PATH:/opt/android-sdk/platform-tools"

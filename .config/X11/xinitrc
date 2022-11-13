@@ -1,0 +1,29 @@
+# This file is part of Itsnexn's dotfiles.
+#
+# Repository: https://github.com/itsnexn/dotfiles
+# LICENSE:    MIT (https://opensource.org/licenses/MIT)
+
+
+xset -dpms &          # Disable DPMS
+xset r rate 300 30 &  # Disable DPMS
+mpd                   # Start music player daemon
+wired &               # https://github.com/Toqozz/wired-notify
+picom -b              # Compositor
+nitrogen --restore    # restore wallpaper
+
+export DESKTOP_SESSION=dwm
+export XDG_SESSION_DESKTOP=dwm
+
+# this fixes the issue with java applications like: arduino-ide and burpsuite
+wmname LG3D
+setxkbmap -option "ctrl:nocaps" # Capslock => Ctrl
+
+# Update xresources
+XRESOURCES="${XDG_CONFIG_HOME:-$HOME/.config}/X11/xresources"
+sleep 10 && (
+if [ -f "$XRESOURCES" ];then
+    echo "$XRESOURCES" | entr xrdb "$XRESOURCES" &
+fi) &
+
+
+"$HOME/.config/suckless/dwm/run.sh"

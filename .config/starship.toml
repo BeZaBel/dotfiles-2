@@ -1,0 +1,63 @@
+# This file is part of Itsnexn's dotfiles.
+#
+# Repository: https://github.com/itsnexn/dotfiles
+# LICENSE:    MIT (https://opensource.org/licenses/MIT)
+
+# -- Default format
+format="""$python$username[@](green)$hostname[:](white)$directory$cmd_duration$character"""
+# -- Minimal format
+# format="""$python$directory$cmd_duration $character"""
+
+# -- right format
+right_format="""$git_branch $git_status"""
+
+[character]
+# -- Minimal character
+# success_symbol = "[](gray)"
+# error_symbol = "[](bold red)"
+# vicmd_symbol    = "[](bold gray)"
+
+# -- Default character
+success_symbol = "[\\$](gray)"
+error_symbol = "[\\$](bold red)"
+vicmd_symbol    = "[\\$](bold gray)"
+
+[username]
+style_user = "green bold"
+style_root = "red bold"
+format = "[$user]($style)"
+disabled = false
+show_always = true
+
+[hostname]
+ssh_only = false
+format =  "[$hostname](bold green)"
+disabled = false
+
+[directory]
+format = "[$path]($style)[$read_only]($read_only_style)"
+style = "bold blue"
+read_only = "  "
+truncation_length = 0
+truncate_to_repo = false
+
+[git_branch]
+format = "on [$branch $symbol](bold red)"
+symbol = ""
+disabled = false
+
+[git_status]
+format ='($modified$untracked$deleted)'
+untracked = "[](yellow)[$count](bold yellow) "
+modified = "[](purple)[$count](bold purple) "
+deleted = "[](red)[$count](bold red) "
+disabled = false
+
+[cmd_duration]
+min_time = 5_000
+format = "  took [$duration](bold yellow)"
+
+[python]
+format = '\([$virtualenv](yellow)\) '
+detect_extensions = []
+detect_files = []

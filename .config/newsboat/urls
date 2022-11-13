@@ -1,0 +1,20 @@
+# This file is part of Itsnexn's dotfiles.
+#
+# Repository: https://github.com/itsnexn/dotfiles
+# LICENSE:    MIT (https://opensource.org/licenses/MIT)
+
+# Queries ======================================================================
+"query:Starred:flags # \"s\""
+"query:Unread Articles:unread = \"yes\""
+
+# News =========================================================================
+"News ==========================================================================="
+https://archlinux.org/feeds/news/ "~Arch Linux News" "( News )"
+https://news.ycombinator.com/rss "~Hacker News" "( News )"
+https://news.ycombinator.com/showrss "~Hacker News - Shows" "( News )"
+https://lwn.net/headlines/newrss "~LWN.net News" "( News )"
+
+# Reddit =======================================================================
+"Reddit ========================================================================="
+https://www.reddit.com/r/linux.rss "~r/linux" "( Reddit )"
+https://www.reddit.com/r/unixporn.rss "~r/unixporn" "( Reddit )"
