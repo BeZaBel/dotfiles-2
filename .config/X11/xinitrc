@@ -20,10 +20,8 @@ setxkbmap -option "ctrl:nocaps" # Capslock => Ctrl
 
 # Update xresources
 XRESOURCES="${XDG_CONFIG_HOME:-$HOME/.config}/X11/xresources"
-sleep 10 && (
-if [ -f "$XRESOURCES" ];then
-    echo "$XRESOURCES" | entr xrdb "$XRESOURCES" &
-fi) &
+
+( [ -f "$XRESOURCES" ] && xrdb "$XRESOURCES" ) &
 
 
 "$HOME/.config/suckless/dwm/run.sh"
