@@ -10,6 +10,7 @@ function has() { type $@ > /dev/null }
 # Programs =====================================================================
 alias cb="xclip -sel clip" # pipe to clipboard
 alias fm="nnnrc"
+alias nnn="nnnrc"
 alias m="ncmpcpp"
 alias nb="newsboat"
 alias py="python3"
