@@ -1,0 +1,54 @@
+#!/bin/sh
+# File preview handler for lf.
+# This file is part of Itsnexn's dotfiles.
+#
+# Repository: https://github.com/itsnexn/dotfiles
+# LICENSE:    MIT (https://opensource.org/licenses/MIT)
+
+set -Cf
+
+fp="$(readlink -f "$1")"
+
+draw_image() {
+	if [ -f "$1" ] && \
+        [ -n "$DISPLAY" ] && \
+        [ -z "$WAYLAND_DISPLAY" ] && \
+        command -V ueberzug >/dev/null 2>&1; then
+		printf '{"action": "add", "identifier": "PREVIEW", "x": "%s", "y": "%s", "width": "%s", "height": "%s", "scaler": "contain", "path": "%s"}\n' "$4" "$5" "$(($2-1))" "$(($3-1))" "$1" > "$FIFO_UEBERZUG"
+	else
+		mediainfo "$1"
+	fi
+}
+
+cachefp() {
+    printf "${XDG_CACHE_HOME:-$HOME/.cache}/lf/%s" \
+        "$(stat --printf '%n%i%s%W%Y' "$fp" | sha256sum | cut -d' ' -f1)"
+}
+
+case "$(file --dereference --brief --mime-type -- "$fp")" in
+	image/*)
+        draw_image "$fp" "$2" "$3" "$4" "$5";;
+
+	text/troff)
+        man "$f" | col -b;;
+
+	text/*|*/xml)
+        bat --terminal-width "$(($4-2))" --style=plain,numbers -f "$fp" ;;
+
+    application/json)
+        cat "$fp" | jq;;
+
+	audio/*|application/octet-stream|video/*)
+        mediainfo "$fp" || exit 1 ;;
+
+	*/pdf)
+		pdfinfo "$fp";;
+
+	application/*zip|application/*rar|application/*tar)
+        atool --list -- "$fp" || exit 1;;
+
+    # default
+    *) file -b -- "$fp";;
+esac
+
+exit 1

@@ -1,0 +1,9 @@
+#!/bin/sh
+# This file is part of Itsnexn's dotfiles.
+#
+# Repository: https://github.com/itsnexn/dotfiles
+# LICENSE:    MIT (https://opensource.org/licenses/MIT)
+
+if [ -n "$FIFO_UEBERZUG" ]; then
+	printf '{"action": "remove", "identifier": "PREVIEW"}\n' > "$FIFO_UEBERZUG"
+fi

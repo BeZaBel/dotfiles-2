@@ -9,8 +9,7 @@ function has() { type $@ > /dev/null }
 
 # Programs =====================================================================
 alias cb="xclip -sel clip" # pipe to clipboard
-alias fm="nnnrc"
-alias nnn="nnnrc"
+alias lf="$HOME/.config/lf/lf_run"
 alias m="ncmpcpp"
 alias nb="newsboat"
 alias py="python3"
@@ -18,17 +17,7 @@ alias tb="nc termbin.com 9999"
 alias t="task"
 alias up="python3 -m http.server"
 alias vim="nvim"
-
-# Git aliases
-alias gs="git status"
-alias ga="git add"
-alias gd="git diff"
-alias gf="git fetch"
-alias gfa="git fetch --all --prune"
-alias gc="git commit -v"
-alias gca="git commit -a"
-alias gco="git checkout"
-alias grm="git rm"
+alias calc="bc -l"
 
 # grep colors
 alias egrep="egrep --color=auto"

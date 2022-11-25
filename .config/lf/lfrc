@@ -1,0 +1,93 @@
+# This file is part of Itsnexn's dotfiles.
+#
+# Repository: https://github.com/itsnexn/dotfiles
+# LICENSE:    MIT (https://opensource.org/licenses/MIT)
+
+set shellopts '-eu'
+set drawbox
+set ratios 1:1
+set info size:time
+set ifs "\n"
+set scrolloff 4
+set icons
+set period 1
+set hiddenfiles ".*:*.log"
+set autoquit on
+set cleaner '~/.config/lf/cleaner'
+set previewer '~/.config/lf/scope'
+
+# Commands =====================================================================
+cmd q quit
+cmd yank-dirname $dirname -- "$f" | head -c-1 | xclip -i -selection clipboard
+cmd yank-path $printf '%s' "$fx" | xclip -i -selection clipboard
+cmd yank-basename $basename -a -- $fx | head -c-1 | xclip -i -selection clipboard
+cmd tmux-popup &tmux popup -T "lf" -d "$PWD" -w 60% -h 60% $*
+cmd open &open "$f"
+
+cmd new ${{
+    case "$*" in
+        */) mkdir -p "$(echo $* | tr ' ' '\ ')";;
+        */*) mkdir -p "$(dirname $(echo $* | tr ' ' '\ '))" && touch "$*";;
+        *) touch "$(echo $* | tr ' ' '\ ')";;
+    esac
+}}
+
+cmd extract %{{
+    len=$(echo "$fx" | wc -l)
+    if [ $len -gt 1 ]; then
+        printf "extract $len items? [y/n] "
+    else
+        printf "extract '$f'? [y/n] "
+    fi
+
+    read ans
+    if [ $ans = "y" ]; then
+        if [ -z ${TMUX+unset} ]; then
+            lf -remote "send $id !aunpack $fx"
+        else
+            lf -remote "send $id tmux-popup 'aunpack $fx'"
+        fi
+    fi
+}}
+
+# Key Mappings =================================================================
+map r
+map d
+
+map dd cut
+map dr delete
+map dt trash
+map yy copy
+
+map gp cd ~/Pictures/
+map gD cd ~/Documents/
+map gd cd ~/Downloads/
+map gm cd /mnt/
+map gc cd ~/.config/
+
+map <c-d> &dragon $fx
+
+map <c-c>u &{{
+    if [ -z ${TMUX+unset} ]; then
+        lf -remote "send $id !du -csh *"
+    else
+        lf -remote "send $id tmux-popup 'du -csh *'"
+    fi
+}}
+map <c-c>x extract
+map <c-c>n push :new<space>
+
+# Rename
+map rr push :rename<space>
+map ra ${{
+	filename="${f##*/}"
+	filename="$(printf '%q' "$filename")"
+	filename="${filename// /<space>}"
+	lf -remote "send $id push :rename<space>$filename"
+}}
+
+# Yank path
+map yp yank-path
+map yd yank-dirname
+map yb yank-basename
+map <enter> open
