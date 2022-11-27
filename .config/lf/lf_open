@@ -1,0 +1,23 @@
+#!/bin/sh
+
+if [ -f "$1" ]; then
+    f="$(readlink -f "$1")"
+    case $(file --mime-type -b "$f") in
+        application/pdf) setsid -f zathura -- "$f" > /dev/null 2>&1;;
+        audio/*|video/*)
+            printf "1: mpv (default)\n2: vlc\nOpen with? "
+            read prog
+            case "$prog" in
+                1) setsid -f mpv -quiet -- "$f" > /dev/null 2>&1;;
+                2) setsid -f vlc -- "$f" > /dev/null 2>&1;;
+            esac;;
+        image/*) setsid -f feh -. -g 800x600 "$f";;
+        text/html) $BROWSER -- "$f";;
+        image/x-xcf) setsid -f gimp "$f" >/dev/null 2>&1;;
+        text/*) $EDITOR "$f";;
+        *)
+            printf "Open with: "
+            read prog
+            [ -n "$prog" ] && "$prog" "$f";;
+    esac
+fi

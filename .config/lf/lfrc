@@ -22,7 +22,7 @@ cmd yank-dirname $dirname -- "$f" | head -c-1 | xclip -i -selection clipboard
 cmd yank-path $printf '%s' "$fx" | xclip -i -selection clipboard
 cmd yank-basename $basename -a -- $fx | head -c-1 | xclip -i -selection clipboard
 cmd tmux-popup &tmux popup -T "lf" -d "$PWD" -w 60% -h 60% $*
-cmd open &open "$f"
+cmd open $"${XDG_CONFIG_HOME:-$HOME/.config}/lf/lf_open" "$f"
 
 cmd new ${{
     case "$*" in
