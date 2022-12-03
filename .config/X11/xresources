@@ -25,7 +25,7 @@ st.cursorColor: #F5E0DC
 
 ! Black
 *.color0:        #181b20
-*.color8:        #282c34
+*.color8:        #323641
 ! Red
 *.color1:        #E06C76
 *.color9:        #E06C75
@@ -45,5 +45,5 @@ st.cursorColor: #F5E0DC
 *.color6:        #61AFEF
 *.color14:       #61AFEF
 ! White
-*.color7:        #ABB2BF
+*.color7:        #7A818E
 *.color15:       #ABB2BF

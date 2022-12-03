@@ -124,6 +124,8 @@ fi
 # https://github.com/zsh-users/zsh-autosuggestions
 [ -d "${ZDOTDIR}/zsh-autosuggestions" ] && \
     source "${ZDOTDIR}/zsh-autosuggestions/zsh-autosuggestions.zsh"
+    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#7A818E"
+
 
 # -- Zsh Syntax Highlighting
 # https://github.com/zdharma-continuum/fast-syntax-highlighting
