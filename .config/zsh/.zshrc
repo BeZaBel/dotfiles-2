@@ -4,13 +4,12 @@
 # Repository: https://github.com/itsnexn/dotfiles
 # LICENSE:    MIT (https://opensource.org/licenses/MIT)
 
-# ENV file
-[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/sh/env" ] && \
-    source "${XDG_CONFIG_HOME:-$HOME/.config}/sh/env"
 
-# Source aliases
-[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/sh/aliases" ] && \
-    source "${XDG_CONFIG_HOME:-$HOME/.config}/sh/aliases"
+# Source configurations
+SH_CONFIGDIR="${XDG_CONFIG_HOME:-$HOME/.config}/sh"
+
+[ -f "$SH_CONFIGDIR/aliases" ] && source "$SH_CONFIGDIR/aliases"
+[ -f "$SH_CONFIGDIR/custom"  ] && source "$SH_CONFIGDIR/custom"
 
 # KeyBindings ==================================================================
 bindkey -v            # Use vim key bindings
