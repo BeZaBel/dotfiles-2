@@ -24,6 +24,12 @@ cmd yank-basename $basename -a -- $fx | head -c-1 | xclip -i -selection clipboar
 cmd tmux-popup &tmux popup -T "lf" -d "$PWD" -w 60% -h 60% $*
 cmd open $"${XDG_CONFIG_HOME:-$HOME/.config}/lf/lf_open" "$f"
 
+cmd open_prg %{{
+    printf "Open with: "
+    read prg
+    [ -n "$prg" ] && setsid -f $prg "$f" > /dev/null 2>&1
+}}
+
 cmd new ${{
     case "$*" in
         */) mkdir -p "$(echo $* | tr ' ' '\ ')";;
@@ -51,7 +57,6 @@ cmd extract %{{
 }}
 
 # Key Mappings =================================================================
-map r
 map d
 
 map dd cut
@@ -77,17 +82,9 @@ map <c-c>u &{{
 map <c-c>x extract
 map <c-c>n push :new<space>
 
-# Rename
-map rr push :rename<space>
-map ra ${{
-	filename="${f##*/}"
-	filename="$(printf '%q' "$filename")"
-	filename="${filename// /<space>}"
-	lf -remote "send $id push :rename<space>$filename"
-}}
-
 # Yank path
 map yp yank-path
 map yd yank-dirname
 map yb yank-basename
 map <enter> open
+map o open_prg
