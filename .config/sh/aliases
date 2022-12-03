@@ -1,4 +1,4 @@
-#!/bin/env sh
+#!/bin/sh
 # This file is part of Itsnexn's dotfiles.
 #
 # Repository: https://github.com/itsnexn/dotfiles
@@ -43,6 +43,6 @@ fi
 
 # Wrapper aliases ==============================================================
 alias arduino-cli="arduino-cli --config-file $XDG_CONFIG_HOME/arduino15/arduino-cli.yaml"
-alias feh="feh --action1 'xclip -selection clipboard -t image/png -i %F'"
+alias feh="feh -. -g 800x600"
 alias yarn="yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/yarnrc"
 
