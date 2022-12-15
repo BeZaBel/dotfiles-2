@@ -45,4 +45,4 @@ fi
 alias arduino-cli="arduino-cli --config-file $XDG_CONFIG_HOME/arduino15/arduino-cli.yaml"
 alias feh="feh -. -g 800x600"
 alias yarn="yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/yarnrc"
-
+alias wget=wget --hsts-file="$XDG_DATA_HOME/wget-hsts"
