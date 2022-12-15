@@ -45,5 +45,5 @@ st.cursorColor: #F5E0DC
 *.color6:        #61AFEF
 *.color14:       #61AFEF
 ! White
-*.color7:        #7A818E
+*.color7:        #ABB2BF
 *.color15:       #ABB2BF
