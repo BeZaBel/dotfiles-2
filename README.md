@@ -23,6 +23,7 @@ machines or new installs. also, others may find some of my configurations
 helpful in customizing their own dotfiles.
 
 ᴄᴏɴꜰɪɢᴜʀᴀᴛɪᴏɴꜱ ɪɴ ᴛʜɪꜱ ʀᴇᴘᴏ:
+- Text editor:              [neovim](https://github.com/neovim/neovim)
 - mpd client/Music Player:  [ncmpcpp](https://github.com/ncmpcpp/ncmpcpp)
 - X11 Compositor:           [picom](https://github.com/yshui/picom)
 - RSS Reader:               [newsboat](https://newsboat.org/)
@@ -33,13 +34,36 @@ helpful in customizing their own dotfiles.
 - Notification deamon:      [wired-notify](https://github.com/Toqozz/wired-notify)
 
 ᴍʏ ᴏᴛʜᴇʀ ᴄᴏɴꜰɪɢᴜʀᴀᴛɪᴏɴꜱ:
-- Text editor: [neovim](https://github.com/neovim/neovim)
-  _([config](https://github.com/Itsnexn/nvim))_
 - Terminal emulator: _personal fork of [st](https://github.com/itsnexn/st)_
 - Window manager:    _personal fork of [dwm](https://github.com/itsnexn/dwm)_
 - Application menu:  _personal fork of [dmenu](https://github.com/itsnexn/dmenu)_
 
-Colorscheme: [Catppuccin](https://github.com/catppuccin/catppuccin)  
+<details>
+<summary>Colorscheme: Based on Atom onedark</summary>
+
+| Label       | Hex       |
+| ----------- | --------- |
+| Black       | `#0E1013` | 
+| Bg0         | `#181B20` | 
+| Bg1         | `#1F2329` | 
+| Bg2         | `#282C34` | 
+| Bg3         | `#30363F` | 
+| Bg4         | `#323641` | 
+| Grey0       | `#A0A8B7` | 
+| Grey1       | `#7A818E` | 
+| Grey2       | `#535965` | 
+| Red         | `#E55561` | 
+| Purple      | `#BF68D9` | 
+| Green       | `#8EBD6B` | 
+| Orange      | `#CC9057` | 
+| Yellow0     | `#E2B86B` | 
+| Yellow1     | `#E8C88C` | 
+| Blue0       | `#4FA6ED` | 
+| Blue1       | `#61AFEF` | 
+| Cyan        | `#48B0BD` | 
+
+</details>
+
 Fonts:
 [jet brains mono](https://github.com/JetBrains/JetBrainsMono),
 [iosevka](https://github.com/be5invis/Iosevka),
