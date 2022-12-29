@@ -38,6 +38,8 @@ cmd new ${{
     esac
 }}
 
+cmd mkdir $mkdir -p "$*"
+
 cmd extract %{{
     len=$(echo "$fx" | wc -l)
     if [ $len -gt 1 ]; then
@@ -72,15 +74,14 @@ map gc cd ~/.config/
 
 map <c-d> &dragon $fx
 
-map <c-c>u &{{
+map u &{{
     if [ -z ${TMUX+unset} ]; then
         lf -remote "send $id !du -csh *"
     else
         lf -remote "send $id tmux-popup 'du -csh *'"
     fi
 }}
-map <c-c>x extract
-map <c-c>n push :new<space>
+map x extract
 
 # Yank path
 map yp yank-path
