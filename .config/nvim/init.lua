@@ -26,6 +26,7 @@ o.grepformat = "%f:%l:%c:%m"
 o.grepprg    = "rg --no-ignore --vimgrep --color=never --trim"
 o.hidden = true
 o.hlsearch = true
+o.laststatus = 2
 o.mouse = "a"
 o.number = true
 o.numberwidth = 3
@@ -33,12 +34,12 @@ o.pumheight = 15
 o.relativenumber = true
 o.scrolloff = 8
 o.shiftwidth = 4
+o.showmode = false
 o.signcolumn = "yes:1"
 o.smartcase = true
 o.smartindent = true
 o.splitbelow = true
 o.splitright = true
-o.swapfile = false
 o.tabstop = 4
 o.termguicolors = false
 o.updatetime = 250
@@ -458,6 +459,7 @@ if packer_ok then
 		})
 
 		-- Utilities
+		use({ "ap/vim-css-color" })
 		use({ "Asheq/close-buffers.vim" })
 		use({ "andymass/vim-matchup" })
 		use({ "tpope/vim-repeat", event = fopenev })
