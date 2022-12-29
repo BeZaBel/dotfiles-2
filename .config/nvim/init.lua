@@ -141,6 +141,87 @@ local theme_init = function()
 	vim.cmd.colorscheme("gruvbox")
 end
 
+local lualine_init = function()
+	local lualine_ok, lualine = pcall(require, "lualine")
+	if not lualine_ok then return end
+
+	-- gruvbox_dark theme
+	local colors = {
+		black        = '#282828',
+		white        = '#ebdbb2',
+		red          = '#fb4934',
+		green        = '#b8bb26',
+		blue         = '#83a598',
+		yellow       = '#fe8019',
+		gray         = '#a89984',
+		darkgray     = '#3c3836',
+		lightgray    = '#504945',
+		inactivegray = '#7c6f64',
+	}
+
+	lualine.setup {
+		options = {
+			icons_enabled = false,
+			theme = {
+				normal = {
+					a = { bg = colors.gray, fg = colors.black, gui = 'bold' },
+					b = { bg = colors.lightgray, fg = colors.white },
+					c = { bg = colors.darkgray, fg = colors.gray },
+				},
+				insert = {
+					a = { bg = colors.blue, fg = colors.black, gui = 'bold' },
+					b = { bg = colors.lightgray, fg = colors.white },
+					c = { bg = colors.darkgray, fg = colors.gray },
+				},
+				visual = {
+					a = { bg = colors.yellow, fg = colors.black, gui = 'bold' },
+					b = { bg = colors.lightgray, fg = colors.white },
+					c = { bg = colors.darkgray, fg = colors.gray },
+				},
+				replace = {
+					a = { bg = colors.red, fg = colors.black, gui = 'bold' },
+					b = { bg = colors.lightgray, fg = colors.white },
+					c = { bg = colors.darkgray, fg = colors.gray },
+				},
+				command = {
+					a = { bg = colors.green, fg = colors.black, gui = 'bold' },
+					b = { bg = colors.lightgray, fg = colors.white },
+					c = { bg = colors.darkgray, fg = colors.gray },
+				},
+				inactive = {
+					a = { bg = colors.darkgray, fg = colors.gray, gui = 'bold' },
+					b = { bg = colors.darkgray, fg = colors.gray },
+					c = { bg = colors.darkgray, fg = colors.gray },
+				},
+			},
+			component_separators = { left = '', right = '' },
+			section_separators = { left = '', right = '' },
+			disabled_filetypes = {
+				statusline = { "netrw" }
+			},
+		},
+		sections = {
+			lualine_a = { 'mode' },
+			lualine_b = { 'filename' },
+			lualine_c = {
+				{ 'branch', fmt = function(b) return "(" .. b .. ")" end },
+				'diff', 'diagnostics'
+			},
+			lualine_x = { 'encoding', 'fileformat', 'filetype' },
+			lualine_y = { 'progress' },
+			lualine_z = { 'location' }
+		},
+		inactive_sections = {
+			lualine_a = {},
+			lualine_b = {},
+			lualine_c = { 'filename' },
+			lualine_x = { 'location' },
+			lualine_y = {},
+			lualine_z = {}
+		},
+	}
+end
+
 local mkdnflow_init = function()
 	local mkdnflow_ok, mkdnflow = pcall(require, "mkdnflow")
 	if not mkdnflow_ok then return end
@@ -413,10 +494,7 @@ if packer_ok then
 		use({ "nvim-lua/plenary.nvim" })
 
 		-- UI
-		use({
-			"itchyny/lightline.vim",
-			config = function() g.lightline = { colorscheme = 'gruvbox' } end
-		})
+		use({ "nvim-lualine/lualine.nvim", config = lualine_init })
 		use({ "ellisonleao/gruvbox.nvim", config = theme_init })
 		use({
 			"nvim-treesitter/nvim-treesitter",
