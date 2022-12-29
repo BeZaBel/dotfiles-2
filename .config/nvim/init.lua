@@ -127,6 +127,19 @@ for type, icon in pairs(signs) do
 end
 
 -- Plugin configuration ========================================================
+local theme_init = function()
+	require("gruvbox").setup({
+		undercurl = false,
+		contrast = "dark",
+		overrides = {
+			SignColumn = { bg = "#3c3836" }
+		},
+		transparent_mode = true,
+	})
+
+	vim.cmd.colorscheme("gruvbox")
+end
+
 local mkdnflow_init = function()
 	local mkdnflow_ok, mkdnflow = pcall(require, "mkdnflow")
 	if not mkdnflow_ok then return end
@@ -403,10 +416,7 @@ if packer_ok then
 			"itchyny/lightline.vim",
 			config = function() g.lightline = { colorscheme = 'gruvbox' } end
 		})
-		use({
-			"ellisonleao/gruvbox.nvim",
-			config = function() vim.cmd.colorscheme("gruvbox") end
-		})
+		use({ "ellisonleao/gruvbox.nvim", config = theme_init })
 		use({
 			"nvim-treesitter/nvim-treesitter",
 			event = fopenev,
