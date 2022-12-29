@@ -13,45 +13,6 @@ set selection-clipboard   "clipboard"
 set statusbar-h-padding   10
 set statusbar-v-padding   10
 set page-padding          15
-
-# Color's ======================================================================
-set default-fg "#ABB2BF"
-set default-bg "#181B20"
-
-set completion-bg           "#1F2329"
-set completion-fg           "#FFFFFF"
-set completion-highlight-bg "#1F2329"
-set completion-highlight-fg "#61AFEF"
-set completion-group-bg     "#1F2329"
-set completion-group-fg     "#E2B86B"
-
-set notification-bg         "#1F2329"
-set notification-fg         "#ABB2BF"
-set notification-error-bg   "#1F2329"
-set notification-error-fg   "#E06C76"
-set notification-warning-bg "#1F2329"
-set notification-warning-fg "#E2B86B"
-
-set statusbar-fg "#ABB2BF"
-set statusbar-bg "#1F2329"
-
-set inputbar-bg "#1F2329"
-set inputbar-fg "#ABB2BF"
-
-set recolor-lightcolor "#181B20"
-set recolor-darkcolor  "#ABB2BF"
-
-set index-fg        "#ABB2BF"
-set index-bg        "#181B20"
-set index-active-fg "#ABB2BF"
-set index-active-bg "#181B20"
-
-set render-loading-bg "#181B20"
-set render-loading-fg "#ABB2BF"
-
-set highlight-color        "#E2B86B"
-set highlight-fg           "#181b20"
-set highlight-active-color "#3E4452"
 set highlight-transparency 0.2
 
 # Keybindings ==================================================================
