@@ -5,11 +5,11 @@
 # LICENSE:    MIT (https://opensource.org/licenses/MIT)
 
 # helper function to ensure program exists
-function has() { type $@ > /dev/null }
+has() { type "$1" > /dev/null; }
 
 # Programs =====================================================================
 alias cb="xclip -sel clip" # pipe to clipboard
-alias lf="$HOME/.config/lf/lf_run"
+alias lf="~/.config/lf/lf_run"
 alias m="ncmpcpp"
 alias nb="newsboat"
 alias py="python3"
@@ -17,7 +17,8 @@ alias tb="nc termbin.com 9999"
 alias t="task"
 alias up="python3 -m http.server"
 alias vim="nvim"
-alias calc="bc -l"
+alias calc="bc -ql"
+alias s="sudo systemctl"
 
 # grep colors
 alias egrep="egrep --color=auto"
@@ -42,7 +43,8 @@ if has exa; then
 fi
 
 # Wrapper aliases ==============================================================
-alias arduino-cli="arduino-cli --config-file $XDG_CONFIG_HOME/arduino15/arduino-cli.yaml"
+alias arduino-cli='arduino-cli --config-file $XDG_CONFIG_HOME/arduino15/arduino-cli.yaml'
 alias feh="feh -. -g 800x600"
-alias yarn="yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/yarnrc"
-alias wget=wget --hsts-file="$XDG_DATA_HOME/wget-hsts"
+alias yarn='yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/yarnrc'
+alias wget='wget --hsts-file="$XDG_DATA_HOME/wget-hsts"'
+
