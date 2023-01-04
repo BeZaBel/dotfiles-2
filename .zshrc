@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/bin/zsh
 # Configured by Itsnexn (itsnexn.xyz)
 # Repository: https://github.com/itsnexn/dotfiles
 
@@ -23,7 +23,7 @@ export KEYTIMEOUT=1
 # -------------------------- Local Helper Functions ----------------------------
 
 # local helper function's
-_have() { type "$1" &>/dev/null; }
+_have() { type "$1" > /dev/null 2>&1; }
 _source_if() { [[ -r "$1" ]] && . "$1"; }
 
 # ---------- Environment variables, Aliases and Other configurations -----------
