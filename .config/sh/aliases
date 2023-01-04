@@ -1,29 +1,33 @@
 #!/bin/sh
 # This file is part of Itsnexn's dotfiles.
-#
 # Repository: https://github.com/itsnexn/dotfiles
-# LICENSE:    MIT (https://opensource.org/licenses/MIT)
 
-# helper function to ensure program exists
-has() { type "$1" > /dev/null; }
+# -------------------------- Local Helper Functions ----------------------------
 
-# Programs =====================================================================
-alias cb="xclip -sel clip" # pipe to clipboard
-alias lf="~/.config/lf/lf_run"
-alias m="ncmpcpp"
-alias nb="newsboat"
-alias py="python3"
+type _have > /dev/null 2>&1 || _have() { type "$1" > /dev/null 2>&1; }
+_exists() { test -r "$1"; }
+
+# -------------------------------- Programs ------------------------------------
+
+# directories
+alias dot='cd $DOTS'
+alias scripts='cd $SCRIPTS'
+alias notes='cd $NOTES'
+
 alias tb="nc termbin.com 9999"
-alias t="task"
-alias up="python3 -m http.server"
-alias vim="nvim"
-alias calc="bc -ql"
+alias chmox='chmod +x'
 alias s="sudo systemctl"
+alias temp='cd $(mktemp -d)'
+alias clear='printf "\e[H\e[2J"'
+alias c='printf "\e[H\e[2J"'
+alias more="less"
 
-# grep colors
+# colorful commands
 alias egrep="egrep --color=auto"
 alias fgrep="fgrep --color=auto"
 alias grep="grep --color=auto"
+alias ip='ip -c'
+alias diff='diff --color'
 
 # confirm before overwriting something
 alias cp="cp -i"
@@ -33,18 +37,38 @@ alias rm="rm -i"
 # typo
 alias "cd.."="cd .."
 alias "cd."="cd .."
-alias claer="clear"
 
-# Changing "ls" to "exa"
-if has exa; then
+_have xclip    && alias cb="xclip -sel clip"
+_have task     && alias t="task"
+_have newsboat && alias nb="newsboat"
+
+if _exists "$HOME/.config/lf/lf_run" && _have lf && _have ueberzug
+then
+	alias lf='$HOME/.config/lf/lf_run'
+fi
+
+if _have python3
+then
+	alias py="python3"
+	alias up="python3 -m http.server"
+fi
+
+if _have exa
+then
     alias ls="exa --color=always --group-directories-first"
     alias ll="exa -l --color=always --group-directories-first"
     alias la="exa -la --color=always --group-directories-first"
 fi
 
-# Wrapper aliases ==============================================================
+if _have nvim
+then
+	alias vim="nvim"
+	alias vi="nvim"
+fi
+
+# ------------------------------ Clean-up $HOME --------------------------------
+
 alias arduino-cli='arduino-cli --config-file $XDG_CONFIG_HOME/arduino15/arduino-cli.yaml'
 alias feh="feh -. -g 800x600"
 alias yarn='yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/yarnrc'
-alias wget='wget --hsts-file="$XDG_DATA_HOME/wget-hsts"'
-
+alias wget='wget -c --hsts-file="$XDG_DATA_HOME/wget-hsts"'
