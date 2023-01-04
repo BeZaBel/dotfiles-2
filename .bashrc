@@ -4,7 +4,6 @@
 
 # shellcheck disable=SC1090
 
-echo $-
 case $- in
 	*i*) ;; # interactive
 	*) return ;; 
