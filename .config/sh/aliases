@@ -60,10 +60,9 @@ then
     alias la="exa -la --color=always --group-directories-first"
 fi
 
-if _have nvim
+if _have vim
 then
-	alias vim="nvim"
-	alias vi="nvim"
+	alias vi="vim"
 fi
 
 # ------------------------------ Clean-up $HOME --------------------------------
