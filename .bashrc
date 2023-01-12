@@ -6,7 +6,7 @@
 
 case $- in
 	*i*) ;; # interactive
-	*) return ;; 
+	*) return ;;
 esac
 
 # --------------------------------- Options ------------------------------------
@@ -31,15 +31,53 @@ _source_if "$SHRC_DIR/env"
 _source_if "$SHRC_DIR/aliases"
 _source_if "$SHRC_DIR/custom"
 
+# ---------------------------------- PATH --------------------------------------
+
+_check_path()
+{
+	[ -n "$1" ] || return 1
+	[ -d "$1" ] || return 1
+	PATH=${PATH//:${1}:/:} # remove if it's already somewhere in the middle
+	PATH=${PATH/#${1}:/}   # remove if it's at the beginning of the path
+	PATH=${PATH/%:${1}/}   # remove if it's at the end of the path
+	return 0
+}
+
+pathappend() {
+	for i in "$@"
+	do
+		_check_path "$i" && export PATH="${PATH:+"$PATH:"}$i"
+	done
+}
+
+pathprepend() {
+	for i in "$@"
+	do
+		_check_path "$i" && export PATH="$i${PATH:+":${PATH}"}"
+	done
+}
+
+pathprepend \
+	"$GOPATH/bin" \
+	"$SCRIPTS"
+
+pathappend \
+	~/.local/bin \
+	~/.local/scripts \
+	/opt/jython/bin \
+	/usr/bin/vendor_perl \
+	/usr/lib/jvm/default/bin \
+	/opt/android-sdk/platform-tools \
+
 # --------------------------------- History ------------------------------------
 
 export HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/bash_hist"
 export HISTSIZE=1000
-export HISTORY_IGNORE="(clear|ls|pwd|exit|sudo reboot|cd -|cd ..)"
+export HISTIGNORE="clear:ls:pwd:exit:sudo reboot:cd -:cd .."
 
-# ----------------------------- key bindings -----------------------------------
-set -o vi
+# ------------------------------ Key bindings ----------------------------------
 
+set -o vi # enable vi keys
 bind '\C-w:unix-filename-rubout'
 
 # ------------------------------- Completion -----------------------------------

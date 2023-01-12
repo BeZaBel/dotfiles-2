@@ -88,16 +88,3 @@ export LESS_TERMCAP_us="[4m"  # underline
 # Java applications
 export JAVA_FONTS=/usr/share/fonts/TTF
 export _JAVA_OPTIONS="-Djava.util.prefs.userRoot='$XDG_CONFIG_HOME/java' -Dawt.useSystemAAFontSettings=on"
-
-# ---------------------------------- path --------------------------------------
-
-pathappend () { [ -d "$1" ] && export PATH="$PATH:$1"; }
-pathprepend() { [ -d "$1" ] && export PATH="$1:$PATH"; }
-
-pathappend "$HOME/.local/bin"
-pathappend "$HOME/.local/scripts"
-pathappend "$XDG_DATA_HOME/go/bin"
-pathappend "/opt/jython/bin/"
-pathappend "/usr/bin/vendor_perl"
-pathappend "/usr/lib/jvm/default/bin"
-pathappend "/opt/android-sdk/platform-tools"
