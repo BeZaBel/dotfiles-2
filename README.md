@@ -21,11 +21,11 @@ them on new machines or new installs. also, others may find some of my
 configurations helpful in customizing their own dotfiles.
 
 Configurations in this repo:
-- Text editor:              [neovim](https://github.com/neovim/neovim)
+- Text editor:              [vim](https://vim.org)
 - mpd client/Music Player:  [ncmpcpp](https://github.com/ncmpcpp/ncmpcpp)
 - X11 Compositor:           [picom](https://github.com/yshui/picom)
 - RSS Reader:               [newsboat](https://newsboat.org/)
-- Shell:                    [zsh](https://www.zsh.org/), [bash](https://www.gnu.org/software/bash/)
+- Shell:                    [bash](https://www.gnu.org/software/bash/) FTW!
 - Terminal multiplexer:     [tmux](https://github.com/tmux/tmux)
 - Document Reader:          [zathura](https://pwmt.org/projects/zathura/)
 - Notification deamon:      [wired-notify](https://github.com/Toqozz/wired-notify)
