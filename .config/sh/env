@@ -3,8 +3,8 @@
 # Repository: https://github.com/itsnexn/dotfiles
 
 export TERMINAL="st"
-export EDITOR="nvim"
-export VISUAL="nvim"
+export EDITOR="vim"
+export VISUAL="vim"
 export BROWSER="brave"
 export TODO_PATH="$HOME/Documents/todo"
 export MANPAGER="less"
