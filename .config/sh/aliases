@@ -13,6 +13,7 @@ _exists() { test -r "$1"; }
 alias dot='cd $DOTS'
 alias scripts='cd $SCRIPTS'
 alias notes='cd $NOTES'
+alias repos='cd $REPOS'
 
 alias tb="nc termbin.com 9999"
 alias chmox='chmod +x'

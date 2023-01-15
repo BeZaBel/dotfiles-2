@@ -22,6 +22,7 @@ export XDG_STATE_HOME="$HOME/.local/state"
 export DOTS="$HOME/.dotfiles"
 export SCRIPTS="$HOME/.local/scripts"
 export NOTES="$HOME/Documents/notes"
+export REPOS="$HOME/Repos"
 
 # ------------------------------ Clean-up $HOME --------------------------------
 
