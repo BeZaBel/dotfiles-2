@@ -1,4 +1,12 @@
 #!/bin/sh
+# This file is only here because some brain-dead
+# applications require it.
+#
+# Copypasta from: github.com/rwxrob/dot
 
-# Source env files
-[ -f "$HOME/.config/sh/env" ] && source "$HOME/.config/sh/env"
+if [ -n "$BASH_VERSION" ]; then
+	# include .bashrc if it exists
+	if [ -f "$HOME/.bashrc" ]; then
+		. "$HOME/.bashrc"
+	fi
+fi
