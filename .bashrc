@@ -31,7 +31,15 @@ _source_if "$SHRC_DIR/env"
 _source_if "$SHRC_DIR/aliases"
 _source_if "$SHRC_DIR/custom"
 
+alias src='. ~/.bashrc'
+
 # ---------------------------------- PATH --------------------------------------
+
+# remove duplicated entries in PATH.
+if _have awk && _have sed
+then
+	PATH=$(echo -n $PATH | awk -v RS=: -v ORS=: '!x[$0]++' | sed "s/\(.*\).\{1\}/\1/")
+fi
 
 _check_path()
 {
@@ -58,16 +66,11 @@ pathprepend() {
 }
 
 pathprepend \
-	"$GOPATH/bin" \
-	"$SCRIPTS"
-
-pathappend \
 	~/.local/bin \
-	~/.local/scripts \
-	/opt/jython/bin \
-	/usr/bin/vendor_perl \
-	/usr/lib/jvm/default/bin \
-	/opt/android-sdk/platform-tools \
+	$GOPATH/bin \
+	$SCRIPTS
+
+export CDPATH=.:~:$REPOS/${USER:-$(whoami)}:~/Documents
 
 # --------------------------------- History ------------------------------------
 
