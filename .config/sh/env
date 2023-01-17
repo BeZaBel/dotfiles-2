@@ -89,3 +89,6 @@ export LESS_TERMCAP_us="[4m"  # underline
 # Java applications
 export JAVA_FONTS=/usr/share/fonts/TTF
 export _JAVA_OPTIONS="-Djava.util.prefs.userRoot='$XDG_CONFIG_HOME/java' -Dawt.useSystemAAFontSettings=on"
+
+# l - https://github.com/itsnexn/l
+export LLINKS="$HOME/.local/l.tsv"
